@@ -1,5 +1,15 @@
-import './styles.css'
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import LogIn from './pages/LogIn'
 
-export function App() {
-	return <h1>Hello world!</h1>
-}
+function App() {
+	return (
+	  <Router>
+		<Routes>
+		  <Route path="/" element={<LogIn />} />
+		</Routes>
+	  </Router>
+	)
+  }
+
+  export default App
