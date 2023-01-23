@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import LogIn from "./pages/LogIn";
+import { routes as appRoutes } from "./utils/routes";
 
 function App() {
   //theme definition
@@ -30,7 +30,13 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/" element={<LogIn />} />
+            {appRoutes.map((route) => (
+              <Route
+                key={route.key}
+                path={route.path}
+                element={<route.component />}
+              />
+            ))}
           </Routes>
         </Layout>
       </Router>
