@@ -2,7 +2,7 @@
   "name": "challenge-react",
   "version": "1.0.0",
   "description": "Condor's React.js assessment challenge",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "app": "npm start -w web",
     "server": "npm start -w server"
