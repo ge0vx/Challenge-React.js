@@ -8,9 +8,11 @@ import {
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { makeStyles } from "@mui/styles";
+import { LOG_IN_TITLE } from "../utils/contants";
 
 const useStyles = makeStyles(() => ({
   paper: {
+    marginTop: "10%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -29,7 +31,7 @@ export default function LogIn() {
       <div className={classes.paper}>
         <AccountCircle fontSize="large"></AccountCircle>
         <Typography component="h1" variant="h5">
-          Log in
+          {LOG_IN_TITLE}
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
