@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   CssBaseline,
@@ -9,6 +9,7 @@ import {
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { makeStyles } from "@mui/styles";
 import { LOG_IN_TITLE } from "../utils/contants";
+import { StoreContext } from "../store/StoreContext";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -24,6 +25,20 @@ const useStyles = makeStyles(() => ({
 
 export default function LogIn() {
   const classes = useStyles();
+  const { actions, state } = useContext(StoreContext);
+
+  const [inputData, setInputData] = useState({
+    user: "",
+    password: "",
+  });
+
+  const submit = (e: any) => {
+    e.preventDefault();
+    actions.signIn({
+      user: inputData.user,
+      password: inputData.password,
+    });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -39,11 +54,17 @@ export default function LogIn() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="user"
+            label="User"
+            name="user"
             autoFocus
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const input = event.target.value.toString();
+              setInputData({
+                ...inputData,
+                [event.target.name]: input,
+              });
+            }}
           />
           <TextField
             variant="outlined"
@@ -54,9 +75,21 @@ export default function LogIn() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const input = event.target.value.toString();
+              setInputData({
+                ...inputData,
+                [event.target.name]: input,
+              });
+            }}
           />
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={(e) => submit(e)}
+          >
             Sign In
           </Button>
         </form>
