@@ -21,17 +21,17 @@ export const routes: Array<Route> = [
         component: LogIn
     },
     {
-        key: 'profile-route',
-        title: 'Profile',
-        path: '/profile',
-        enabled: true,
-        component: Profile
-    },
-    {
         key: 'search-route',
         title: 'Search',
         path: '/search',
         enabled: true,
         component: Search
+    },
+    {
+        key: 'profile-route',
+        title: 'Profile',
+        path: '/profile',
+        enabled: true,
+        component: Profile
     }
 ]
